@@ -1,7 +1,7 @@
 import discord
 import os
 
-TOKEN = 'DISCORD_TOKEN'
+TOKEN = os.getenv("DISCORD_TOKEN")
 
 TRIGGER_PHRASES = ["killing myself", "kill myself", "kys", "kill yourself"]
 
