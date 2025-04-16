@@ -29,7 +29,5 @@ async def on_message(message):
     if any(phrase in msg for phrase in TRIGGER_PHRASES):
         if os.path.exists(GIF_PATH):
             await message.channel.send(file=discord.File(GIF_PATH))
-        else:
-            await message.channel.send("Oops! The GIF file is missing.")
 
 client.run(TOKEN)
