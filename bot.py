@@ -1,13 +1,11 @@
 import discord
 import os
 
-# Replace this with your bot token
-TOKEN = 'TOKENHERE'
+TOKEN = 'DISCORD_TOKEN'
 
-# Phrase to trigger the video reply
-TRIGGER_PHRASE = "kill myself"
-# Path to the video you want to send (make sure this file exists)
-VIDEO_PATH = "nkys.gif"
+TRIGGER_PHRASES = ["killing myself", "kill myself", "kys", "kill yourself"]
+
+GIF_PATH = "nkys.gif"
 
 # Set up the bot with necessary intents
 intents = discord.Intents.default()
@@ -26,10 +24,12 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if TRIGGER_PHRASE in message.content.lower():
-        if os.path.exists(VIDEO_PATH):
-            await message.channel.send(file=discord.File(VIDEO_PATH))
+    # Convert message content to lowercase and check for any trigger phrase
+    msg = message.content.lower()
+    if any(phrase in msg for phrase in TRIGGER_PHRASES):
+        if os.path.exists(GIF_PATH):
+            await message.channel.send(file=discord.File(GIF_PATH))
         else:
-            await message.channel.send("Sorry, the video file is missing!")
+            await message.channel.send("Oops! The GIF file is missing.")
 
 client.run(TOKEN)
