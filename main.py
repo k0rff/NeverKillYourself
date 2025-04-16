@@ -3,7 +3,7 @@ import os
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 
-TRIGGER_PHRASES = ["killing myself", "kill myself", "kys", "kill yourself"]
+TRIGGER_PHRASES = ["killing myself", "kill myself", "kys", "kill yourself", "kill your self"]
 
 GIF_PATH = "nkys.gif"
 
